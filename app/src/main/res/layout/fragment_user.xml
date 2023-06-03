@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/paws"
+
+    tools:context=".UserFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="660dp"
+        android:layout_gravity="center_horizontal"
+
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/logout"
+            android:layout_gravity="right"
+
+            />
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userImg"
+                android:layout_width="120dp"
+                style="@style/circleImageView"
+                android:layout_height="120dp"
+
+                android:layout_marginTop="24dp"
+                android:background="@drawable/user_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shapeAppearanceOverlay="@style/circleImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/editImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/user_icon"
+                android:backgroundTint="@color/not_active"
+                android:src="@drawable/edit"
+                app:layout_constraintBottom_toBottomOf="@+id/userImg"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="40dp"
+    android:layout_marginHorizontal="4dp"
+    android:paddingHorizontal="24dp"
+    android:background="@drawable/button2"
+    android:paddingVertical="24dp"
+>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/userfill"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/not_active"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textSize="15sp"
+                        android:text="@string/name"/>
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:saveEnabled="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="-5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text=""
+                        android:drawableEnd="@drawable/edit"
+                        android:textSize="19sp"
+
+                        android:background="@null"/>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/email"
+                android:layout_marginEnd="10dp"
+                android:background="@android:color/transparent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/not_active"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="15sp"
+                    android:text="@string/email"/>
+
+                <TextView
+                    android:id="@+id/userEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:saveEnabled="false"
+
+                    android:layout_marginTop="-5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:drawableEnd="@drawable/edit"
+                    android:textSize="16sp"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+
+                android:src="@drawable/phone"
+                android:background="@android:color/transparent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/not_active"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="15sp"
+                    android:text="@string/phone"/>
+
+                <TextView
+                    android:id="@+id/userPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:saveEnabled="false"
+                    android:layout_marginTop="-5dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:drawableEnd="@drawable/edit"
+                    android:textSize="16sp"
+
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+</LinearLayout>
+
+
+
+    </LinearLayout>
+</FrameLayout>

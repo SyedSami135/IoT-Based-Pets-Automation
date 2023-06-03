@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/bg">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageButton
+            android:id="@+id/goBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/field"
+            android:src="@drawable/chevron_left"
+            android:padding="10dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:shadowColor="@color/black"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_small"
+            tools:ignore="ExtraText" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/otpV"
+            android:textColor="@color/yellow"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/otpMSg"
+            android:textColor="@color/not_active"
+            android:textSize="16sp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/opt1"
+                android:soundEffectsEnabled="true"
+                android:focusedByDefault="true"
+                android:cursorVisible="false"
+                android:nextFocusForward="@id/opt2"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/otp"
+                android:fontFamily="sans-serif"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textColor="@color/bg"
+                android:textSize="30sp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:soundEffectsEnabled="true"
+                android:id="@+id/opt2"
+                android:cursorVisible="false"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/otp"
+                android:fontFamily="sans-serif"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:soundEffectsEnabled="true"
+                android:id="@+id/opt3"
+                android:nextFocusForward="@id/opt4"
+                android:cursorVisible="false"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/otp"
+                android:fontFamily="sans-serif"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+            <EditText
+                android:soundEffectsEnabled="true"
+                android:id="@+id/opt4"
+                android:cursorVisible="false"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/otp"
+                android:fontFamily="sans-serif"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:boxStrokeColor="@android:color/transparent"
+                app:boxStrokeWidth="0dp"
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+
+        </LinearLayout>
+
+
+        <android.widget.Button
+            android:layout_width="match_parent"
+            android:id="@+id/conToLogin"
+            android:layout_height="50dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="34dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/poppins_medium"
+            android:stateListAnimator="@null"
+            android:text="@string/verify"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
