@@ -1,29 +1,33 @@
 package com.example.pets.Adapters;
 
 
-import android.text.Layout;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pets.R;
 
-import java.util.List;
+        import android.text.Layout;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ImageView;
+        import android.widget.TextView;
+        import android.widget.Toast;
+
+        import androidx.annotation.NonNull;
+        import androidx.recyclerview.widget.RecyclerView;
+
+        import com.example.pets.R;
+
+        import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerAdapter";
-    List<String> moviesList;
+    List<String> list;
 
-    public RecyclerAdapter(List<String> moviesList) {
-        this.moviesList = moviesList;
+    public RecyclerAdapter(List<String> list) {
+
+        this.list = list;
     }
 
     @NonNull
@@ -38,12 +42,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowCountTextView.setText(String.valueOf(position));
-        holder.textView.setText(moviesList.get(position));
+        holder.textView.setText(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return list.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -63,7 +67,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    moviesList.remove(getAdapterPosition());
+                    list.remove(getAdapterPosition());
                     notifyItemRemoved(getAdapterPosition());
                     return true;
                 }
@@ -73,8 +77,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), moviesList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), list.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -1,10 +1,14 @@
 package com.example.pets;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -25,8 +29,18 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class Temp_Graph extends AppCompatActivity {
     LineChart chart;
+
+
+    FirebaseDatabase database;
+    TextView hum,temp;
+    ImageView fanbtnOn,fanbtnOff;
+    int lightValue,TempValue,HumValue,fanValue,heaterValue;
+    ToggleButton lightbtn,heaterbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +50,11 @@ public class Temp_Graph extends AppCompatActivity {
         chart = findViewById(R.id.chart);
 
         List<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(0, 10));
-        entries.add(new Entry(1, 15));
-        entries.add(new Entry(2, 20));
-        entries.add(new Entry(3, 15));
-        entries.add(new Entry(4, 12));
-        entries.add(new Entry(5, 18));
-        entries.add(new Entry(6, 20));
-        entries.add(new Entry(7, 15));
-        entries.add(new Entry(8, 12));
-        entries.add(new Entry(9, 18));
+        entries.add(new Entry(0, 33));
+        entries.add(new Entry(1, 35));
+        entries.add(new Entry(2, 34));
+        entries.add(new Entry(3, 31));
+        entries.add(new Entry(4, 33));
 
         LineDataSet dataSet = new LineDataSet(entries, "Temperature");
         dataSet.setDrawCircles(true);
@@ -66,13 +75,13 @@ public class Temp_Graph extends AppCompatActivity {
         chart.setData(lineData);
 
 
-        String[] labels = new String[] {"12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"};
+        String[] labels = new String[] {"12:00", "1:00", "2:00", "3:00", "4:00"};
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         YAxis yAxis = chart.getAxisLeft();
-        yAxis.setAxisMinimum(10);
+
 
         YAxis rightAxis = chart.getAxisRight();
         rightAxis.setDrawLabels(false); // remove values on right y-axis
@@ -87,7 +96,7 @@ public class Temp_Graph extends AppCompatActivity {
         chart.getAxisRight().setAxisLineWidth(0);
 
         chart.getDescription().setEnabled(false);
-        chart.getLegend().setEnabled(false);
+        chart.getLegend().setEnabled(true);
         chart.setTouchEnabled(true);
         chart.invalidate();
         chart.setGridBackgroundColor(Color.WHITE);
@@ -143,6 +152,73 @@ public class Temp_Graph extends AppCompatActivity {
 //            }
 //        });
 //
+
+
+        lightbtn= findViewById(R.id.lightbtn);
+
+        fanbtnOn=findViewById(R.id.Fan_On);
+        fanbtnOff= findViewById(R.id.FanOff);
+        heaterbtn= findViewById(R.id.heaterbtn);
+
+
+
+        database = FirebaseDatabase.getInstance();
+
+//        LED Reference
+        DatabaseReference led = database.getReference("led");
+        led.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                lightValue=dataSnapshot.getValue(Integer.class);
+                lightbtn.setChecked(lightValue == 1);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        DatabaseReference fanRef = database.getReference("fan");
+        fanRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                fanValue = dataSnapshot.getValue(Integer.class);
+                if(fanValue==1){
+                    fanbtnOn.setImageDrawable(getResources().getDrawable(R.drawable.fanon));
+                    fanbtnOff.setImageDrawable(getResources().getDrawable(R.drawable.fanoff));
+                }else if(fanValue==0){
+                    fanbtnOn.setImageDrawable(getResources().getDrawable(R.drawable.fanoff));
+                    fanbtnOff.setImageDrawable(getResources().getDrawable(R.drawable.fanon));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        DatabaseReference HeaterRef = database.getReference("heater");
+        HeaterRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                heaterValue = dataSnapshot.getValue(Integer.class);
+
+                heaterbtn.setChecked(heaterValue == 1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 }
 

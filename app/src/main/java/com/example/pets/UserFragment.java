@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +22,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +39,8 @@ public class UserFragment extends Fragment {
     ImageView userImg;
 
 
-    TextView userEmail,userName, contact;
+    TextView userEmail,userName;
+    EditText contact;
     private static final int PICK_IMAGE = 100;
     FirebaseDatabase firebaseDatabase ;
     DatabaseReference databaseReference ;
@@ -120,15 +125,30 @@ public class UserFragment extends Fragment {
             }
         });
 
+//        contact.setFocusable(false);
+//        contact.addTextChangedListener(new TextWatcher() {
+//                                             @Override
+//                                             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                                             }
+//
+//                                             @Override
+//                                             public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                                                 Task<Void> Contact = userRef.child("name").setValue(contact.getText());
+//                                                 Toast.makeText(getContext(), "Temperature " + contact.getText() + "update Sucessfully", Toast.LENGTH_SHORT);
+//
+//                                             }
+//
+//                                             @Override
+//                                             public void afterTextChanged(Editable s) {
+//
+//                                             }
+//                                         }
+//        );
 
 
-
-
-        // Inflate the layout for this fragment
-
-
-
-             editImg.setOnClickListener(new View.OnClickListener() {
+        editImg.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
                      Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -136,6 +156,7 @@ public class UserFragment extends Fragment {
 //
                  }
              });
+
 
         return v;
 
